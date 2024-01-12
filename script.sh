@@ -51,6 +51,7 @@ done < <(grep -v '^#' "$parent_path/.env" | grep 'path_' | sed 's/^.*=//')
 # This command creates (or overwrites) a README.md file in the parent directory of the backup folder.
 # It uses 'echo' with the '-e' flag to enable interpretation of backslash escapes and writes a basic description about the backup.
 backup_parent_directory=$(dirname "$backup_folder")
+cp "$parent_path"/.gitignore "$HOME/$backup_parent_directory/.gitignore"
 echo -e "# klipper-backup 💾 \nKlipper backup script for manual or automated GitHub backups \n\nThis backup is provided by [klipper-backup](https://github.com/Staubgeborener/klipper-backup)." > "$HOME/$backup_parent_directory/README.md"
 
 # This section sets up the commit message for the git backup.
